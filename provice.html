@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>切换城市</title>
+    <script type="text/javascript" src="city-data.js"></script>
+    <script type="text/javascript" src="city.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        button {
+            width: 22%;
+            margin: 1.5%;
+            line-height: 35px;
+            height:35px;
+            font-size: 18px;
+            border-radius: 10%;
+            background-color: #eaf4ff;
+
+        }
+        h2 {
+            text-align: center;
+            color: #0f9bec;
+        }
+        .title{
+            height:50px;
+            background: #0f9bec;
+            line-height: 50px;
+            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-align: center;
+
+        }
+        .back{
+            color: #ffffff;
+            text-decoration:none;
+            position: absolute;
+            left:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="title"><a href="index.html" class="back">>返回</a>城市切换</div>
+<h2>最常访问城市</h2>
+<div id="historyCityList">
+</div>
+<h2>选择省份</h2>
+<div id="choose"></div>
+</body>
+<script>
+    var historyCityListDiv = document.getElementById("historyCityList");
+    var historyCityList = getCityOrderByDate(8);
+    for (var i = 0; i < historyCityList.length; i++) {
+        var button = document.createElement("button");
+        button.innerHTML = historyCityList[i].name;
+        button.onclick = (function (i) {
+            return function () {
+                console.log(i);
+                localStorage.setItem("city", historyCityList[i].name);
+                location.assign("index.html");
+                addCity(historyCityList[i].name);
+            }
+        })(i);
+        historyCityListDiv.appendChild(button);
+    }
+
+    var choose = document.getElementById("choose");
+    for (var i = 0; i < city.citylist.length; i++) {
+        var button = document.createElement("button");
+        choose.appendChild(button);
+        button.innerHTML = city.citylist[i].p;
+        button.onclick = (function (a) {
+            return function(){
+                var cityTop =city.citylist[a].p;
+                if(cityTop=="北京"||cityTop=="上海"||cityTop=="天津"||cityTop=="重庆"||cityTop=="香港"||cityTop=="澳门"){
+                    localStorage.setItem('city',city.citylist[a].p);
+                    location.assign("index.html");
+                    addCity(city.citylist[a].p);
+                }else{
+                    location.assign("city.html?city="+a);
+                }
+
+            }
+            })(i)
+    };
+
+
+
+</script>
+</html>

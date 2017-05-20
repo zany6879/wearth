@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>城市</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script type="text/javascript" src="city.min.js"></script>
+    <script type="text/javascript" src="city-data.js"></script>
+    <style>
+          * {
+              padding: 0;
+              margin: 0;
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              -o-box-sizing: border-box;
+              -ms-box-sizing: border-box;
+              box-sizing: border-box;
+          }
+        button {
+            width:31%;
+            margin: 1%;
+            line-height: 35px;
+            height:35px;
+            font-size: 18px;
+            border-radius: 10%;
+            background-color: #eaf4ff;
+
+        }
+        h2 {
+            text-align: center;
+            color: #0f9bec;
+        }
+        .title{
+            height:50px;
+            background: #0f9bec;
+            line-height: 50px;
+            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .back{
+            color: #ffffff;
+            text-decoration:none;
+            position: absolute;
+            left:20px;
+        }
+    </style>
+</head>
+<body>
+<div class="title"><a href="provice.html" class="back">>返回</a>选择城市</div>
+<div id="cities"></div>
+</body>
+<script>
+    var index=location.search.split("=")[1];
+    var city = city.citylist[index].c;
+    console.log(city);
+    for (var i = 0; i < city.length; i++) {
+        var cities = document.getElementById("cities");
+        var button = document.createElement("button");
+        cities.appendChild(button);
+        button.innerHTML = city[i].n;
+        button.onclick =(function (a) {
+            return function () {
+                localStorage.setItem('city',(city[a].n));
+                addCity(city[a].n);
+                location.assign("index.html");
+            }
+        })(i);
+
+    };
+
+</script>
+</html>

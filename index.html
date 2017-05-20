@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报</title>
+    <link rel="stylesheet" href="weather.css">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+    <link rel="icon" sizes="any" mask="" href="image/zany.jpg">    
+    <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="fingerprint.js"></script>
+    <script src="tts.min.js"></script>
+    <script src="tts_demo.js"></script>
+</head>
+
+<body>
+<div class="page" >
+    <div class="header row" >
+        <div class="col-md-6 col-xs-6 left">
+            <span id="city"></span>
+            <span>天气</span>
+            <a class="small" href="provice.html">[切换]</a>
+            <div id="picture"></div>
+        </div>
+        <div class="col-md-6 col-xs-6 right">
+            <div id="weather"></div><button onclick="saying()" id="button"></button>
+            <div class="tem"><span id="mix-t"></span><span>&nbsp;~&nbsp;</span><span id="max-t"></span>
+            </div>
+            <div class="nowt"><span>当前气温：</span><span id="now-t"></span><span>℃</span></div>
+            <div class="nowt"><span id="wind"></span><span id="speed"></span><span>级</span></div>
+            <div class="space">
+                <div class="qul"><span>空气质量指数：</span><span id="deg"></span><span id="qlty"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="body">
+    <h3>7日天气预报</h3>
+</div>
+<div id="foot">
+</div>
+</body>
+<script type="text/JavaScript" src="weather.js"></script>
+</html>

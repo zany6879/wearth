@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="city.min.js"></script>
+</head>
+<body>
+<div class="counties"></div>
+</body>
+<script>
+    var index=location.search.split("=")[1];
+    var county = city.citylist[index].c;
+    console.log(county);
+    for (var i = 0; i < county.length; i++) {
+        var counties = document.getElementById("counties");
+        var button = document.createElement("button");
+        counties.appendChild(button);
+        button.innerHTML = county[i].s;
+    };
+</script>
+</html>
